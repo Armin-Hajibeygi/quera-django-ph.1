@@ -1,17 +1,17 @@
 from django.db import models
 from accounts.models import User
 
-
+class ExperienceLevel(models.IntegerChoices):
+    BEGINNER = 0, 'Beginner'
+    INTERMEDIATE = 1, 'Intermediate'
+    EXPERT = 2, 'Expert'
+    
 class Benefactor(models.Model):
-    EXPERIENCE_CHOICES = (
-        ('0', 'Beginner'),
-        ('1', 'Medium'),
-        ('2', 'Expert'),
-    )
+   
 
     user = models.OneToOneField(User)
     experience = models.SmallIntegerField(
-        choices=EXPERIENCE_CHOICES, default='0')
+        choices=ExperienceLevel, default=ExperienceLevel.BEGINNER)
     free_time_per_week = models.PositiveSmallIntegerField(default=0)
 
 
