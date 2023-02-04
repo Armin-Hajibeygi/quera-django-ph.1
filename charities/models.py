@@ -1,22 +1,22 @@
 from django.db import models
 from accounts.models import User
 
+
 class ExperienceLevel(models.IntegerChoices):
     BEGINNER = 0, 'Beginner'
     INTERMEDIATE = 1, 'Intermediate'
     EXPERT = 2, 'Expert'
-    
-class Benefactor(models.Model):
-   
 
-    user = models.OneToOneField(User)
+
+class Benefactor(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     experience = models.SmallIntegerField(
         choices=ExperienceLevel, default=ExperienceLevel.BEGINNER)
     free_time_per_week = models.PositiveSmallIntegerField(default=0)
 
 
 class Charity(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     reg_number = models.CharField(max_length=10)
 
