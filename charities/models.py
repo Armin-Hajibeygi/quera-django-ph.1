@@ -11,7 +11,7 @@ class ExperienceLevel(models.IntegerChoices):
 class Benefactor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     experience = models.SmallIntegerField(
-        choices=ExperienceLevel, default=ExperienceLevel.BEGINNER)
+        choices=ExperienceLevel.choices, default=ExperienceLevel.BEGINNER)
     free_time_per_week = models.PositiveSmallIntegerField(default=0)
 
 
